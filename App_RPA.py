@@ -12,17 +12,30 @@ st.title("Testing")
 
 st.select_slider('Pick a size', range(0, 1000, 5))
 
-st.sidebar.slider('Pick a number for tenure', 0, 100)
 
-with st.sidebar.form(key='my_form'):
-    username = st.text_input('Username')
-    password = st.text_input('Password')
-    st.form_submit_button('Login')
 
-#with st.spinner(text='In progress'):
-#    st.success(st.balloons())
+#with st.sidebar.form(key='my_form'):
+    #username = st.text_input('Username')
+    #password = st.text_input('Password')
+    #st.form_submit_button('Login')
 
-#st.progress(progress_variable_1_to_100)
+gender = ['Female', 'Male']
+partner_status = ['Partner', 'No partner']
+paperless = ['Yes', 'No']
+
+st.sidebar.title("Register a new customer")
+
+#Register new customer
+with st.sidebar.form("reg_form"):
+    gender_val = st.radio('Selecet gender', gender)
+    partner_val = st.radio('Selecet partner status', partner_status)
+    tenure_val = st.number_input('Select years of tenure', min_value=0, max_value=100, value=0, help='Insert number between 0 and 100')
+    paperless_val = st.radio('Paperless billing', paperless)
+    
+    # Every form must have a submit button.
+    submitted = st.form_submit_button("Submit")
+    if submitted:
+        st.write("slider", slider_val, "checkbox", checkbox_val)
 
 options = ("Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin")
 
