@@ -18,7 +18,6 @@ customer_reg = st.container()
 new_customer_reg = st.container()
 customer_churn = st.container()
 
-
 with dataset:
     st.subheader('Customer churn dataset')
     st.text('The dataset is downloaded from kaggle.com')
@@ -46,8 +45,9 @@ with customer_reg:
     
         # Every form must have a submit button.
         submitted = st.form_submit_button("Submit")
+        # Check if the generated new ID already exist in dataset.
+        # If it exists, the make another until it is unique
         if submitted:
-            #st.write("slider", slider_val, "checkbox", checkbox_val)
             with new_customer_reg:
                 id_taken = True
                 while id_taken:
@@ -62,4 +62,4 @@ with header:
     st.text('This is an app where customer churn data is presented. You can register new customers and know imediatly if they are likekly to churn. This way you can start different initiatives towards those customers and make them loyal to the company.')
 
 
-#with customer_churn:
+
