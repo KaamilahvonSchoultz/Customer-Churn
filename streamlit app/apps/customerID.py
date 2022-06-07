@@ -17,7 +17,7 @@ def app():
         data = pd.read_csv(dir_path)
         return (data)
 
-    data =get_data('data\customer_Churn_train_predictions.csv')
+    data =get_data('data\customer_Churn_test_predictions.csv')
 
 
     with st.form('customerID'):

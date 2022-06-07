@@ -14,14 +14,15 @@ def app ():
         data = pd.read_csv(dir_path)
         return (data)
 
-    data =get_data('data\customer_Churn_train_predictions.csv')
+    data =get_data('data\customer_Churn_test_predictions.csv')
             
     df = data.where(data['Churn'] == True)
     df = df.dropna()
     df =df.reset_index(drop=True)
 
     df = df.sort_values(by='Churn_prob',ascending=False)
-    df1 = df.filter(['customerID','Churn'], axis=1)
+    df['Probablity of churn']= df['Churn_prob'].round(decimals = 3)
+    df1 = df.filter(['customerID','Churn','Probablity of churn'], axis=1)
     df1 =df1.reset_index(drop=True)
     df1['Features']='View factors effecting customer churn'
     first_col = df1.pop('Features')
